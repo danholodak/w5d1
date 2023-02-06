@@ -1,4 +1,7 @@
-class HashSet
+require_relative 'p02_hashing'
+require_relative 'p01_int_set'
+
+class HashSet < ResizingIntSet
   attr_reader :count
 
   def initialize(num_buckets = 8)
@@ -7,18 +10,23 @@ class HashSet
   end
 
   def insert(key)
+    super
   end
 
   def include?(key)
+    super
   end
 
   def remove(key)
+    super
   end
 
   private
 
-  def [](num)
+  def [](input)
     # optional but useful; return the bucket corresponding to `num`
+    i = input.hash % num_buckets
+    return @store[i]
   end
 
   def num_buckets
